@@ -15,13 +15,15 @@ MinMatchType = 1
 MaxMatchType = 2
 sensitive_lexicon = ['王八蛋', '王八羔子']
 
+
 def get_context(text: Text, matchType: int=MinMatchType) -> Text:
     '''获取敏感词的上下文，供后续的模型训练。
     Args:
         text: 长文本
         matchType: 匹配方式
     Returns:
-        上下文信息'''
+        上下文信息
+    '''
     stop_token = ['；', '。']
     dfa = DFAUtils(sensitive_lexicon)
     _, sensitive_span = dfa.getSensitiveWord(text, matchType)
